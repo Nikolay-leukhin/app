@@ -17,7 +17,6 @@ class AppTypography {
     fontSize: 11.sp,
   );
 
-
   static final captionReg1 = fontReg.copyWith(fontSize: 12.sp);
 
   static final footnoteReg = fontReg.copyWith(fontSize: 13.sp);
@@ -38,11 +37,9 @@ class AppTypography {
 
   static final largeTitleReg = fontReg.copyWith(fontSize: 34.sp);
 
-
   static final captionBold2 = fontBold.copyWith(
     fontSize: 11.sp,
   );
-
 
   static final captionBold1 = fontBold.copyWith(fontSize: 12.sp);
 
@@ -63,4 +60,6 @@ class AppTypography {
   static final titleBold1 = fontBold.copyWith(fontSize: 28.sp);
 
   static final largeTitleBold = fontBold.copyWith(fontSize: 34.sp);
+
+  static final hugeTitleBold = fontBold.copyWith(fontSize: 60.sp);
 }
