@@ -6,6 +6,7 @@ import 'package:app/features/home/cubit/home_cubit.dart';
 import 'package:app/features/home/data/home_repository.dart';
 import 'package:app/features/home/ui/home_page.dart';
 import 'package:app/features/home/ui/weather_aspect_card.dart';
+import 'package:app/features/search/ui/seacrh_screen.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/fonts.dart';
 import 'package:app/utils/gradients.dart';
@@ -21,23 +22,14 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-List<Widget> pages = [HomePage(), HomePage(), HomePage()];
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
-
-  void _changePage(int i) {
-    setState(() {
-      index = i;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: pages[index],
+        body: HomePage(),
         bottomNavigationBar: _createNavigationBar(context),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
@@ -214,7 +206,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: AppColors.primary,
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/search');
+                },
                 icon: Icon(
                   Icons.menu_open_rounded,
                   color: AppColors.primary,

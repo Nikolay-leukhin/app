@@ -1,4 +1,5 @@
 import 'package:app/features/home/ui/home_screen.dart';
+import 'package:app/features/search/ui/seacrh_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +19,7 @@ class _MyAppState extends State<MyApp> {
         routes: {
           '/': (context) => HomeScreen(),
           '/welcome': (context) => HomeScreen(),
-          '/auth': (context) => HomeScreen(),
+          '/search': (context) => SearchScreen(),
           '/home': (context) => HomeScreen(),
         },
       ),

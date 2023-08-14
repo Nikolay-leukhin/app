@@ -6,7 +6,7 @@ class AppGradients {
   static final purpleDark = LinearGradient(
     end: Alignment.topRight,
     begin: Alignment.bottomLeft,
-    colors: [Color(0xFF5936B4).withOpacity(0.96), Color(0xFF362A84).withOpacity(0.96)]);
+    colors: [Color(0xFF5936B4), Color(0xFF362A84)]);
 
   static final purple = LinearGradient(colors: [Color(0xFF3658B1), Color(0xFFC159EC)]);
 
