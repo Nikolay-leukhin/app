@@ -2,6 +2,11 @@ class Failure {
   final String msg;
 
   Failure({required this.msg});
+
+  @override
+  String toString() {
+    return "Failure : msg = $msg";
+  }
 }
 
 class FailureMessage {

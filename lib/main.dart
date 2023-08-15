@@ -1,4 +1,5 @@
 import 'package:app/app.dart';
+import 'package:app/features/add_city/data/add_city_repository.dart';
 import 'package:app/features/auth/data/user_repository.dart';
 import 'package:app/features/home/cubit/home_cubit.dart';
 import 'package:app/features/home/data/home_repository.dart';
@@ -26,7 +27,10 @@ class MyRepositoryProvider extends StatelessWidget {
           lazy: false,
         ),
         RepositoryProvider(create: (context) => UserRepository(),
-        lazy: false,)
+        lazy: false,),
+        RepositoryProvider(
+          create: (context) => AddCityRepository(apiServ)
+        ),
       ],
       child: MyBlocProvider(),
     );
@@ -43,7 +47,7 @@ class MyBlocProvider extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit(
             homeRepository: context.read<HomeRepository>(),
-            userRepository: context.read<UserRepository>()
+            userRepository: context.read<UserRepository>(),
           ),
           lazy: false,
         ),

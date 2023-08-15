@@ -31,20 +31,17 @@ class _SearchWeatherCardState extends State<SearchWeatherCard> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '19°',
-                    style: AppTypography.hugeTitleBold.copyWith(color: AppColors.primary),
-                  ),
-                  SizedBox(
-                    height: 15,
+                  FittedBox(
+                    child: Text(
+                      '19°',
+                      style: AppTypography.hugeTitleBold.copyWith(color: AppColors.primary),
+                    ),
                   ),
                   Text(
                     'descr',
                     style: AppTypography.captionBold1.copyWith(color: AppColors.tertiary),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

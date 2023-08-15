@@ -27,7 +27,9 @@ class _SearchScreenState extends State<SearchScreen> {
           title: Text('Weather'),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/add_city');
+                },
                 icon: Icon(
                   Icons.settings,
                   color: AppColors.primary,
@@ -38,18 +40,14 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Container(
             padding: EdgeInsets.only(top: 15, right: 15, left: 15),
             child: Container(
-              width: double.infinity,
-              alignment: Alignment.topCenter,
-              child: ListView(
-                children: [
-                  SearchWeatherCard()
-                ],
-              )
-            ),
+                width: double.infinity,
+                alignment: Alignment.topCenter,
+                child: ListView(
+                  children: [SearchWeatherCard(), SearchWeatherCard(), SearchWeatherCard()],
+                )),
           ),
         ),
       ),
     );
   }
 }
-
