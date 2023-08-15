@@ -49,7 +49,6 @@ class _HomePageState extends State<HomePage> {
                     builder: (context, state) {
                       print(state);
                       if (state is HomeLoadedSuccessState) {
-                        print('what');
                         final _reposiotory = context.watch<HomeRepository>();
                         return Container(
                           child: Column(
@@ -67,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                                   style: AppTypography.titleBold3.copyWith(
                                     color: AppColors.secondary,
                                   )),
-                              Text("P: ${_reposiotory.currentWeather.pressure}& SL: ${_reposiotory.currentWeather.seaLevel}",
+                              Text("P: ${_reposiotory.currentWeather.main}",
                                   style: AppTypography.titleBold3.copyWith(
                                     color: AppColors.primary,
                                   ))
