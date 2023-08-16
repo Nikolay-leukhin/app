@@ -95,7 +95,6 @@ class _AddCityScreenState extends State<AddCityScreen> {
                 child: Text(snapshot.error.toString()),
               );
             } else if (snapshot.hasData && snapshot.data != null) {
-              print('wtf');
               return ListView.separated(
                   separatorBuilder: (context, index) {
                     return SizedBox(
@@ -104,13 +103,14 @@ class _AddCityScreenState extends State<AddCityScreen> {
                   },
                   itemBuilder: (context, index) {
                     return AddCityCard(
+                      key: ValueKey(data[index]),
                       city: data[index],
                     );
                   },
                   itemCount: data.length);
             } else {
               return Center(
-                child: Text('no data'),
+                child: Text('no data', style: AppTypography.largeTitleBold.copyWith(color: AppColors.primary),),
               );
             }
           default:

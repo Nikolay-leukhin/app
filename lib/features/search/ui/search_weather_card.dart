@@ -1,3 +1,4 @@
+import 'package:app/models/current_weather.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/fonts.dart';
 import 'package:app/utils/gradients.dart';
@@ -5,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchWeatherCard extends StatefulWidget {
-  const SearchWeatherCard({super.key});
+  final CurrentWeather curWeather;
+
+  const SearchWeatherCard({super.key, required this.curWeather});
 
   @override
   State<SearchWeatherCard> createState() => _SearchWeatherCardState();
@@ -33,24 +36,23 @@ class _SearchWeatherCardState extends State<SearchWeatherCard> {
                 children: [
                   FittedBox(
                     child: Text(
-                      '19°',
+                      '${widget.curWeather.temp}°',
                       style: AppTypography.hugeTitleBold.copyWith(color: AppColors.primary),
                     ),
                   ),
                   Text(
-                    'descr',
+                    '${widget.curWeather.description}',
                     style: AppTypography.captionBold1.copyWith(color: AppColors.tertiary),
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'place',
+                        '${widget.curWeather.placeName}',
                         style: AppTypography.bodyReg.copyWith(color: AppColors.primary),
                       ),
                       Text(
-                        'main dscr',
+                        '${widget.curWeather.main}',
                         style: AppTypography.footnoteBold.copyWith(color: AppColors.primary),
                       )
                     ],

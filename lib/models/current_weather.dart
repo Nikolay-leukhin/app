@@ -33,7 +33,7 @@ class CurrentWeather {
     description: json['weather'][0]['description'], 
     temp: json['main']['temp'], 
     feelsLikeTemp: json['main']['feels_like'], 
-    seaLevel: json['main']['sea_level'], 
+    seaLevel: json['main']['sea_level'] ?? 0, 
     pressure: json["main"]['pressure'], 
     placeName: json['name'],
     humidity: json['main']['humidity'],

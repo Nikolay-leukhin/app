@@ -37,5 +37,3 @@ class AddCityAPI {
   }
 }
 
-
-// https://api.geoapify.com/v1/geocode/search?city=Tokyo&format=json&apiKey=YOUR_API_KEY
