@@ -16,7 +16,6 @@ class HomeRepository implements AbstractHomeRepository {
     WeatherData weather = await api.weather.getCurrentWeather(lat, lon);
     //
     if (weather.item2 != null) {
-      log('INITTED');
       this.currentWeather = weather.item2!;
     }
     return weather;

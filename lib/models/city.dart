@@ -1,3 +1,4 @@
+
 class City {
   final String name;
 
@@ -18,16 +19,24 @@ class City {
 
   factory City.fromJson(Map<String, dynamic> json){
     return City(
-      country: json['country'] ?? 'wha country',
-      name: json['city'] ?? 'who name',
+      country: json['country'],
+      name: json['city'] ?? json['name'],
       lon: json['lon'],
       lat: json['lat']
     );
   }
 
+  Map<String, dynamic> toJson() => 
+    {
+      'name': name,
+      'country': country,
+      'lat': lat,
+      'lon': lon
+    };
+
 
   @override
   String toString() {
-    return "Ciry($name, $country, $lat, $lon)";
+    return "City($name, $country, $lat, $lon)";
   }
 }
