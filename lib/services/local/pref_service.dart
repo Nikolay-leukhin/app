@@ -19,10 +19,15 @@ class PrefServise {
   Future<void> saveCity(City newCity) async {
     final db = await pref;
     final List<String>? cities = db.getStringList(cityListKey);
-
+    print(cities);
     String encodedCity = jsonEncode(newCity.toJson());
 
-    await db.setStringList(cityListKey, [encodedCity] + (cities ?? []));
+    if (cities == null || cities.contains(encodedCity) == false) {
+      await db.setStringList(cityListKey, [encodedCity] + (cities ?? []));
+      print('city saved, $newCity');
+    } else {
+      print('city failed, $newCity');
+    }
   }
 
   Future<List<City>> getCities() async {

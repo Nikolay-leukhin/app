@@ -13,7 +13,7 @@ class SearchRepository {
 
     for (var city in cityList) {
       final EitherData<CurrentWeather> weather = await api.weather.getCurrentWeather(city.lat, city.lon);
-      if (weather.item1 == null) {
+      if (weather.item2 != null) {
         cityWeatherList.add(weather.item2!);
       }
     }

@@ -13,9 +13,6 @@ class AddCityCubit extends Cubit<AddCityState> {
 
   void saveCity(City newCity) async {
     final List<City> cityList = await pref.getCities();
-    print('12312312');
-    print(cityList);
-    print('123123');
 
     if (cityList.contains(newCity)) {
       emit(CityAlreadySavedState());
@@ -28,4 +25,6 @@ class AddCityCubit extends Cubit<AddCityState> {
       emit(CitySavedFailureState());
     }
   }
+
+  
 }
