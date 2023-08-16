@@ -1,5 +1,7 @@
 
-class City {
+import 'package:equatable/equatable.dart';
+
+class City extends Equatable{
   final String name;
 
   final String country;
@@ -39,4 +41,7 @@ class City {
   String toString() {
     return "City($name, $country, $lat, $lon)";
   }
+  
+  @override
+  List<Object?> get props => [name, country, lat, lon];
 }

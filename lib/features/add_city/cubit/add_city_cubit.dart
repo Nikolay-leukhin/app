@@ -11,13 +11,7 @@ class AddCityCubit extends Cubit<AddCityState> {
 
   AddCityCubit({required this.pref}) : super(AddCityInitial());
 
-  void saveCity(City newCity) async {
-    final List<City> cityList = await pref.getCities();
-
-    if (cityList.contains(newCity)) {
-      emit(CityAlreadySavedState());
-      return;
-    }
+  Future<void> saveCity(City newCity) async {
     try {
       await pref.saveCity(newCity);
       emit(CitySavedSuccessState());
@@ -25,6 +19,4 @@ class AddCityCubit extends Cubit<AddCityState> {
       emit(CitySavedFailureState());
     }
   }
-
-  
 }

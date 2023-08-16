@@ -103,6 +103,7 @@ class _AddCityScreenState extends State<AddCityScreen> {
                   },
                   itemBuilder: (context, index) {
                     return AddCityCard(
+                      key: ValueKey(data[index]),
                       city: data[index],
                     );
                   },

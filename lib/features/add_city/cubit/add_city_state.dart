@@ -5,7 +5,9 @@ sealed class AddCityState {}
 
 final class AddCityInitial extends AddCityState {}
 
-final class CityAlreadySavedState extends AddCityState {}
+final class CityNotAbleToSaveState extends AddCityState {}
+
+final class CityAbleToSaved extends AddCityState {}
 
 final class CitySavedSuccessState extends AddCityState {}
 

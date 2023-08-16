@@ -1,4 +1,5 @@
 import 'package:app/features/add_city/cubit/add_city_cubit.dart';
+import 'package:app/features/add_city/data/add_city_repository.dart';
 import 'package:app/models/city.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/fonts.dart';
@@ -16,6 +17,20 @@ class AddCityCard extends StatefulWidget {
 }
 
 class _AddCityCardState extends State<AddCityCard> {
+  bool ableToAdd = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<bool> checkIsAbleToAddCard() async {
+    final _prefs = context.read<AddCityCubit>().pref;
+    //
+    List<City> cityList = await _prefs.getCities();
+    return !cityList.contains(widget.city);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,14 +50,20 @@ class _AddCityCardState extends State<AddCityCard> {
             '${widget.city.name} | ${widget.city.country}',
             style: AppTypography.bodyBold.copyWith(color: AppColors.primary),
           )),
-          IconButton(
-              onPressed: () {
-                context.read<AddCityCubit>().saveCity(widget.city);
-              },
-              icon: Icon(
-                Icons.add_circle_outline_sharp,
-                color: AppColors.primary,
-              ))
+          StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) => IconButton(
+                onPressed: () async {
+                  await context.read<AddCityCubit>().saveCity(widget.city);
+                  bool isCardAbleToSave = await checkIsAbleToAddCard();
+                  setState(() {
+                    ableToAdd = isCardAbleToSave;
+                  });
+                },
+                icon: Icon(
+                  ableToAdd ? Icons.add_circle_outline_sharp : Icons.not_interested_rounded,
+                  color: AppColors.primary,
+                )),
+          )
         ],
       ),
     );
