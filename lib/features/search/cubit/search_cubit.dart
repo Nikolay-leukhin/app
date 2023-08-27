@@ -22,7 +22,18 @@ class SearchCubit extends Cubit<SearchState> {
     final List<City> cityList = await pref.getCities();
     try {
       final List<CurrentWeather> weatherList = await searchRepository.getSubCitiesForecast(cityList);
-      emit(SearchLoadedSuccessState(weatherList));
+      emit(SearchLoadedSuccessState());
+    } catch (ex) {
+      log(ex.toString());
+      emit(SearchLoadedFailureState());
+    }
+  }
+
+  void deleteCity(City deletingCity) {
+    try {
+      searchRepository.weatherList = searchRepository.weatherList.where((weather) => weather.cityData != deletingCity).toList();
+      pref.deleteCity(deletingCity);
+      emit(SearchLoadedSuccessState());
     } catch (ex) {
       log(ex.toString());
       emit(SearchLoadedFailureState());

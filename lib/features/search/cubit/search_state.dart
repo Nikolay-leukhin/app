@@ -7,11 +7,6 @@ final class SearchInitial extends SearchState {}
 
 final class SearchWaitingState extends SearchState {}
 
-final class SearchLoadedSuccessState extends SearchState {
-  final List<CurrentWeather> weatherCityListForecast;
-
-  SearchLoadedSuccessState(this.weatherCityListForecast);
-  
-}
+final class SearchLoadedSuccessState extends SearchState {}
 
 final class SearchLoadedFailureState extends SearchState {}

@@ -1,4 +1,5 @@
 import 'package:app/features/search/cubit/search_cubit.dart';
+import 'package:app/features/search/data/search_repository.dart';
 import 'package:app/features/search/ui/search_weather_card.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/fonts.dart';
@@ -38,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   Navigator.of(context).pushNamed('/add_city');
                 },
                 icon: Icon(
-                  Icons.settings,
+                  Icons.add_box_outlined,
                   color: AppColors.primary,
                 ))
           ],
@@ -51,19 +52,21 @@ class _SearchScreenState extends State<SearchScreen> {
                 alignment: Alignment.topCenter,
                 child: BlocBuilder<SearchCubit, SearchState>(builder: (context, state) {
                   if (state is SearchWaitingState) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (state is SearchLoadedSuccessState) {
+                    final cityWeatherData = context.read<SearchRepository>().weatherList;
+
                     return ListView.separated(
-                      itemCount: state.weatherCityListForecast.length,
+                      itemCount: cityWeatherData.length,
                       separatorBuilder: (context, index) => SizedBox(height: 15),
                       itemBuilder: (context, index) => SearchWeatherCard(
-                        curWeather: state.weatherCityListForecast[index],
+                        curWeather: cityWeatherData[index],
                       ),
                     );
                   } else {
-                    return Center(
+                    return const Center(
                       child: Text('something went wrong ttry later'),
                     );
                   }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:app/models/city.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,5 +42,18 @@ class PrefServise {
     final List<City> cityList = rawCityList.map((e) => City.fromJson(jsonDecode(e))).toList();
 
     return cityList;
+  }
+
+  Future<void> deleteCity(City userCity) async {
+    final db = await pref;
+    final List<City> rawCityList = await getCities();
+
+    List<String> newCityList = rawCityList.where((city) => city != userCity).map((e) => jsonEncode(e.toJson())).toList();
+
+    if (newCityList.length + 1 == rawCityList.length) {
+      final resp = db.setStringList(cityListKey, newCityList);
+    } else {
+      log('something went wrong may be no such city with tha tname');
+    }
   }
 }

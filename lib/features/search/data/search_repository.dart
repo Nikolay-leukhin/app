@@ -4,6 +4,8 @@ import 'package:app/services/api/api_services.dart';
 import 'package:app/utils/variables.dart';
 
 class SearchRepository {
+  List<CurrentWeather> weatherList = [];
+
   final ApiServices api;
 
   SearchRepository(this.api);
@@ -14,9 +16,12 @@ class SearchRepository {
     for (var city in cityList) {
       final EitherData<CurrentWeather> weather = await api.weather.getCurrentWeather(city.lat, city.lon);
       if (weather.item2 != null) {
-        cityWeatherList.add(weather.item2!);
+        final newWeather = weather.item2!;
+        newWeather.cityData = city;
+        cityWeatherList.add(newWeather);
       }
     }
+    weatherList = cityWeatherList;
 
     return cityWeatherList;
   }

@@ -1,8 +1,12 @@
+import 'dart:developer';
+
+import 'package:app/features/search/cubit/search_cubit.dart';
 import 'package:app/models/current_weather.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/fonts.dart';
 import 'package:app/utils/gradients.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchWeatherCard extends StatefulWidget {
@@ -30,6 +34,41 @@ class _SearchWeatherCardState extends State<SearchWeatherCard> {
           child: Stack(
             alignment: Alignment.bottomLeft,
             children: [
+              Positioned(
+                top: 30,
+                left: 0,
+                child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Container(
+                              child: AlertDialog(
+                                actions: [
+                                  TextButton(
+                                      onPressed: () async {
+                                        log(widget.curWeather.cityData.toString());
+                                        context.read<SearchCubit>().deleteCity(widget.curWeather.cityData!);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("Ok")),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Cansel'))
+                                ],
+                                content: Text('ohh nooo'),
+                              ),
+                            );
+                          });
+                    },
+                    child: const Icon(
+                      Icons.delete_outline_outlined,
+                      color: Colors.white,
+                      size: 25,
+                    )),
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,

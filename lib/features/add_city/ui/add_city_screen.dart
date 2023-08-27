@@ -30,7 +30,6 @@ class _AddCityScreenState extends State<AddCityScreen> {
   Future<List<City>?> _getCities(text) async {
     if (_fieldController.text.length > 1) {
       final res = await context.read<AddCityRepository>().getCities(text);
-      print(res);
       return res.item2;
     } else {
       return [];

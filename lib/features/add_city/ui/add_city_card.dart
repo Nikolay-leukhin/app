@@ -1,5 +1,6 @@
 import 'package:app/features/add_city/cubit/add_city_cubit.dart';
 import 'package:app/features/add_city/data/add_city_repository.dart';
+import 'package:app/features/search/cubit/search_cubit.dart';
 import 'package:app/models/city.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/fonts.dart';
@@ -58,6 +59,8 @@ class _AddCityCardState extends State<AddCityCard> {
                   setState(() {
                     ableToAdd = isCardAbleToSave;
                   });
+
+                  context.read<SearchCubit>().loadUserWeatherSubscriptions();
                 },
                 icon: Icon(
                   ableToAdd ? Icons.add_circle_outline_sharp : Icons.not_interested_rounded,
