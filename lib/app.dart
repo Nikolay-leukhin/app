@@ -1,3 +1,4 @@
+import 'package:app/features/add_city/ui/add_city_screen.dart';
 import 'package:app/features/home/ui/home_screen.dart';
 import 'package:app/features/search/ui/seacrh_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
           '/': (context) => HomeScreen(),
           '/welcome': (context) => HomeScreen(),
           '/search': (context) => SearchScreen(),
-          '/home': (context) => HomeScreen(),
+          '/add_city': (context) => AddCityScreen(),
         },
       ),
     );

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:app/config.dart';
 import 'package:app/models/current_weather.dart';
+import 'package:app/services/api/add_city.dart';
 import 'package:app/services/errors.dart';
 import 'package:app/utils/variables.dart';
 import 'package:dio/dio.dart';
@@ -12,6 +13,7 @@ part 'weather.dart';
 
 class ApiServices {
   late Weather weather;
+  late AddCityAPI addCity;
 
   final Dio dio = Dio(BaseOptions(headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -19,5 +21,6 @@ class ApiServices {
 
   ApiServices() {
     weather = Weather(dio_: dio);
+    addCity = AddCityAPI(dio_: dio);
   }
 }

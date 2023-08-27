@@ -10,7 +10,7 @@ class Weather {
     try {
       final response = await dio_.get(URl);
       if (response.statusCode == 200) {
-        log(response.data.toString());
+        print(response.data.toString());
         return Tuple2(null, CurrentWeather.fromJson(response.data));
       }
       throw Failure(msg: FailureMessage.UNHANDLED_ERROR);
